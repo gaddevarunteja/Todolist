@@ -1,12 +1,15 @@
+function appendDeleteButton(li) {
+    var deleteElement = document.createElement("SPAN");
+    var txt = document.createTextNode('\u00d7');
+    deleteElement.classList.add('deleteBtn');
+    deleteElement.appendChild(txt);
+    li.appendChild(deleteElement);
+}
 // Function to add delete buttons for each list item
 function appendDeleteButtons() {
     var list_items = document.getElementsByTagName('LI');
     for(var i = 0; i < list_items.length; i++) {
-        var deleteElement = document.createElement("SPAN");
-        var txt = document.createTextNode('\u00d7');
-        deleteElement.classList.add('deleteBtn');
-        deleteElement.appendChild(txt);
-        list_items[i].appendChild(deleteElement);
+        appendDeleteButton(list_items[i]);
     }
 }
 appendDeleteButtons();
@@ -44,7 +47,7 @@ function addItemToList() {
         document.getElementById('todo-ul').appendChild(li);
     }
     document.getElementById('itemId').value = "";
-    appendDeleteButtons();
+    appendDeleteButton(li);
     deleteListItemListener();
     todoListSize();
 }
