@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h2> TodoList </h2>
+        <input type="text" id="itemId" placeholder="Add List Item">
+        <span onclick="addItemToList()" class="addButton"> Add </span>
+    </div>
+    <!--ToDoList-->
+    <ul id="todo-ul">
+        <li> Wake up at 5am </li>
+        <li> Learn how to use Vue.js </li>
+        <li> Drink Coffee </li>
+    </ul>
+    <!--TasksCount-->
+    <div style="text-align: center;">
+        <h4> Total number of tasks is </h4>
+        <h4 id="sz">  </h4>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
