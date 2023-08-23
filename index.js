@@ -4,6 +4,7 @@ function appendDeleteButton(li) {
     deleteElement.classList.add('deleteBtn');
     deleteElement.appendChild(txt);
     li.appendChild(deleteElement);
+    return deleteElement;
 }
 // Function to add delete buttons for each list item
 function appendDeleteButtons() {
@@ -14,18 +15,21 @@ function appendDeleteButtons() {
 }
 appendDeleteButtons();
 
-// Delete List Item Listener function which deletes list item onclick
-function deleteListItemListener() {
-    var delete_items = document.getElementsByClassName('deleteBtn');
-    for(var i = 0; i < delete_items.length; i++) {
-        delete_items[i].onclick = function() {
-            this.parentElement.remove();
-            // this.parentElement.style.display = "none";
-            todoListSize();
-        }
+function deleteListItemListener(delete_item) {
+    delete_item.onclick = function() {
+        this.parentElement.remove();
+        // this.parentElement.style.display = "none";
+        todoListSize();
     }
 }
-deleteListItemListener();
+// Delete List Item Listener function which deletes list item onclick
+function deleteListItemsListener() {
+    var delete_items = document.getElementsByClassName('deleteBtn');
+    for(var i = 0; i < delete_items.length; i++) {
+        deleteListItemListener(delete_items[i]);
+    }
+}
+deleteListItemsListener();
 
 // Check a list item onclick
 var list = document.querySelector('ul');
@@ -47,8 +51,8 @@ function addItemToList() {
         document.getElementById('todo-ul').appendChild(li);
     }
     document.getElementById('itemId').value = "";
-    appendDeleteButton(li);
-    deleteListItemListener();
+    var deleteButton = appendDeleteButton(li);
+    deleteListItemListener(deleteButton);
     todoListSize();
 }
 
